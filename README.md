@@ -5,7 +5,8 @@ Dự án website cho dịch vụ Cloud VPS, Máy Chủ Vật Lý, Anti-DDoS, và
 ---
 
 ### Chẩn đoán các vấn đề về hiệu suất 20:25:00 10 thg 12, 2025
-<img width="991" height="573" alt="image" src="https://github.com/user-attachments/assets/92221496-c54c-486a-84f8-8bcf19aac29e" />
+<img width="1267" height="788" alt="image" src="https://github.com/user-attachments/assets/2a9afa33-2662-4bb5-b2a4-6b426b486601" />
+
 
 
 ## 📋 Mục Lục
