@@ -393,7 +393,7 @@ const ProductsPageContent: React.FC = () => {
             </div>
 
             <MotionDiv
-              className="grid md:grid-cols-4 grid-cols-2 max-w-7xl mx-auto  gap-4 md:gap-6 mb-16"
+              className="grid md:grid-cols-4 grid-cols-1 max-w-7xl mx-auto  gap-4 md:gap-6 mb-16"
             >
               {cloudPlus.map(({ title, icon, desc, price }) => (
                 <div key={title} className="h-full rounded-2xl flex flex-col  items-center justify-center bg-[#121212] border border-white/5 hover:border-[#f97316]/50 transition-colors p-5 shadow-lg shadow-black/20">
@@ -419,7 +419,7 @@ const ProductsPageContent: React.FC = () => {
             </div>
 
             <MotionDiv
-              className="grid md:grid-cols-4 grid-cols-2 max-w-7xl mx-auto  gap-4 md:gap-6 mb-16"
+              className="grid md:grid-cols-4 grid-cols-1 max-w-7xl mx-auto  gap-4 md:gap-6 mb-16"
             >
               {dedicatePlus.map(({ title, icon, desc, price }) => (
                 <div key={title} className="h-full rounded-2xl flex flex-col  items-center justify-center bg-[#121212] border border-white/5 hover:border-[#f97316]/50 transition-colors p-5 shadow-lg shadow-black/20">
