@@ -1,13 +1,14 @@
 'use client';
 import React, { Suspense } from 'react';
 
-import { ChevronDown, Loader2, ShieldCheck, Bot, Activity, Gauge, Zap, Headset } from 'lucide-react';
+import { ChevronDown, Loader2, ShieldCheck, Bot, Activity, Gauge, Zap, Headset, Cpu, KeyboardMusic, HardDrive } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { ProductType } from '../../../../../types';
 import ServiceCard from '@/components/card/ServiceCard';
 import { PRODUCT_PLANS } from '../../../../../constants';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const MotionDiv = motion.div;
 
@@ -32,6 +33,20 @@ const ProductsPageContent: React.FC = () => {
     { title: 'AlmaLinux', icon: "/av-de/almalinux-logo.svg" },
     { title: 'CentOS', icon: "/av-de/CentOS_color_logo.svg.png" },
     { title: 'Debian', icon: "/av-de/Openlogo-debianV2.svg.png" },
+  ]
+
+  const cloudPlus = [
+    { title: 'Addon CPU', icon: Cpu, desc: '+1 vCore', price: "+35.000đ" },
+    { title: 'Addon RAM', icon: KeyboardMusic, desc: '+1 GB', price: "+25.000đ" },
+    { title: 'Addon DISK', icon: HardDrive, desc: '+10 GB SSD', price: "+15.000đ" },
+    { title: 'Addon NETWORK', icon: Gauge, desc: '+100Mbps', price: "+100.000đ" },
+  ]
+
+  const dedicatePlus = [
+    { title: 'Addon GPU', icon: Cpu, desc: '+4GB GPU', price: "+600.000đ" },
+    { title: 'Addon RAM', icon: KeyboardMusic, desc: '+32 GB', price: "+500.000đ" },
+    { title: 'Addon DISK', icon: HardDrive, desc: '+800 GB SSD', price: "+600.000đ" },
+    { title: 'Addon NETWORK', icon: Gauge, desc: '+500Mbps', price: "+500.000đ" },
   ]
 
   // Derive activeTab from URL params (always in sync)
@@ -155,12 +170,15 @@ const ProductsPageContent: React.FC = () => {
                   <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight">Lá Chắn Vững Chắc cho hạ tầng của bạn</h2>
                   <p className="text-slate-300 text-base md:text-lg">Mô hình firewall thông minh giúp dịch vụ đứng vững trước các cuộc tấn công DDoS phức tạp, bảo vệ ứng dụng và tối ưu hiệu suất truy cập.</p>
                   <div className="flex flex-wrap gap-3 pt-2">
-                    <button className="px-5 py-3 cursor-pointer rounded-full bg-[#f97316] hover:bg-[#ea580c] text-white font-bold transition-colors shadow-lg shadow-[#f97316]/20">
+                    <Link
+                      target='_blank'
+                      href="https://viettelidc.com.vn/tin-tuc/firewall-la-gi-vai-tro-va-tam-quan-trong-cua-firewall-doi-voi-nguoi-dung"
+                      className="px-5 py-3 cursor-pointer rounded-full bg-[#f97316] hover:bg-[#ea580c] text-white font-bold transition-colors shadow-lg shadow-[#f97316]/20">
                       Tìm Hiểu Firewall
-                    </button>
-                    <button className="px-5 py-3 cursor-pointer rounded-full border border-[#f97316]/60 text-[#f97316] hover:bg-[#f97316]/10 font-bold transition-colors">
+                    </Link>
+                    <Link target='_blank' href="https://t.me/Bowlan" className="px-5 py-3 cursor-pointer rounded-full border border-[#f97316]/60 text-[#f97316] hover:bg-[#f97316]/10 font-bold transition-colors">
                       Tư Vấn Ngay
-                    </button>
+                    </Link>
                   </div>
                 </div>
 
@@ -171,6 +189,11 @@ const ProductsPageContent: React.FC = () => {
                 </div>
               </div>
             </MotionDiv>
+
+            <div className="max-w-2xl mx-auto mb-16 space-y-4 text-center">
+              <p className='text-3xl font-bold text-[#f97316]'>Công Nghệ Nổi Bật</p>
+              <hr className="border-[#f97316] max-w-1/2 mx-auto shadow-[0_20px_80px_rgba(0,0,0,0.45)]" />
+            </div>
 
             <MotionDiv
 
@@ -186,6 +209,12 @@ const ProductsPageContent: React.FC = () => {
                 </div>
               ))}
             </MotionDiv>
+
+
+            <div className="max-w-2xl mx-auto mb-16 space-y-4 text-center">
+              <p className='text-3xl font-bold'>Chi Phí Sử Dụng FireWall</p>
+            </div>
+
           </>
         )}
 
@@ -204,13 +233,18 @@ const ProductsPageContent: React.FC = () => {
                 <h2 className="text-xl md:text-2xl text-center font-bold text-white leading-tight">Giải pháp máy ảo mạnh mẽ (VPS), linh hoạt và ổn định với công nghệ ảo hóa VMware.</h2>
                 <p className="text-slate-300 text-base md:text-lg">Những gì làm cho dịch vụ của chúng tôi trở nên khác biệt.</p>
                 <div className="flex flex-wrap gap-3 pt-2">
-                  <button className="text-lg px-5 py-3 cursor-pointer rounded-full border border-[#f97316]/60 text-[#f97316] hover:bg-[#f97316]/10 font-bold transition-colors">
+                  <Link target='_blank' href="https://t.me/Bowlan" className="text-lg px-5 py-3 cursor-pointer rounded-full border border-[#f97316]/60 text-[#f97316] hover:bg-[#f97316]/10 font-bold transition-colors">
                     Tư Vấn Ngay
-                  </button>
+                  </Link>
                 </div>
 
               </div>
             </MotionDiv>
+
+            <div className="max-w-2xl mx-auto mb-16 space-y-4 text-center">
+              <p className='text-3xl font-bold'>Hỗ trợ tất cả hệ điều hành phổ biến</p>
+              <p className="text-slate-300 text-lg">Chúng tôi hỗ trợ nhiều hệ điều hành phổ biến.</p>
+            </div>
 
             <MotionDiv
               className="grid md:grid-cols-5 grid-cols-2 max-w-5xl mx-auto  gap-4 md:gap-6 mb-16"
@@ -224,6 +258,10 @@ const ProductsPageContent: React.FC = () => {
                 </div>
               ))}
             </MotionDiv>
+
+            <div className="max-w-2xl mx-auto mb-16 space-y-4 text-center">
+              <p className='text-3xl font-bold'>Bảng Giá Cloud Server</p>
+            </div>
           </>
         )}
 
@@ -244,17 +282,23 @@ const ProductsPageContent: React.FC = () => {
                 </h2>
                 <p className="text-slate-300 text-base md:text-lg">Toàn quyền sử dụng tài nguyên mà không lo chia sẻ.</p>
                 <div className="flex flex-wrap gap-3 pt-2">
-                  <button className="text-lg px-5 py-3 cursor-pointer rounded-full border border-[#f97316]/60 text-[#f97316] hover:bg-[#f97316]/10 font-bold transition-colors">
+                  <Link target="_blank" href="https://t.me/Bowlan" className="text-lg px-5 py-3 cursor-pointer rounded-full border border-[#f97316]/60 text-[#f97316] hover:bg-[#f97316]/10 font-bold transition-colors">
                     Tư Vấn Ngay
-                  </button>
+                  </Link>
                 </div>
 
               </div>
             </MotionDiv>
 
+            <div className="max-w-2xl mx-auto mb-16 space-y-4 text-center">
+              <p className='text-3xl font-bold'>Hỗ trợ tất cả hệ điều hành phổ biến</p>
+              <p className="text-slate-300 text-lg">Chúng tôi hỗ trợ nhiều hệ điều hành phổ biến.</p>
+            </div>
+
             <MotionDiv
               className="grid md:grid-cols-5 grid-cols-2 max-w-5xl mx-auto  gap-4 md:gap-6 mb-16"
             >
+
               {cloudFeatures.map(({ title, icon }) => (
                 <div key={title} className="h-full rounded-2xl flex flex-col items-center justify-center bg-[#121212] border border-white/5 hover:border-[#f97316]/50 transition-colors p-5 shadow-lg shadow-black/20">
                   <div className="flex items-center gap-3 mb-3">
@@ -264,6 +308,42 @@ const ProductsPageContent: React.FC = () => {
                 </div>
               ))}
             </MotionDiv>
+
+            <div className="max-w-2xl mx-auto mb-16 space-y-4 text-center">
+              <p className='text-3xl font-bold'>Cấu Hình Cho Thuê Máy Chủ Vật Lý</p>
+            </div>
+
+          </>
+        )}
+
+        {activeTab === ProductType.PROXY && (
+          <>
+            <MotionDiv
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4 }}
+              className="mb-14 rounded-3xl border border-white/5 bg-[#0b0b0d] overflow-hidden relative"
+            >
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(249,115,22,0.12),transparent_45%),radial-gradient(circle_at_80%_30%,rgba(14,165,233,0.12),transparent_40%)]" />
+              <div className="flex flex-col items-center justify-center gap-10 p-8 md:p-12 text-center relative">
+                <p className="text-xl font-semibold text-[#f97316] uppercase tracking-[0.2em]">Proxy Server Việt Nam</p>
+                <h2 className="text-xl md:text-2xl text-center font-bold text-white leading-tight">
+                  Proxy server Việt Nam tốc độ cao, ổn định và bảo mật. Hỗ trợ giao thức HTTP/SOCKS5.
+                </h2>
+                <div className="flex flex-wrap gap-3 pt-2">
+                  <Link target="_blank" href="https://t.me/Bowlan" className="text-lg px-5 py-3 cursor-pointer rounded-full border border-[#f97316]/60 text-[#f97316] hover:bg-[#f97316]/10 font-bold transition-colors">
+                    Tư Vấn Ngay
+                  </Link>
+                </div>
+
+              </div>
+            </MotionDiv>
+
+            <div className="max-w-2xl mx-auto mb-16 space-y-4 text-center">
+              <p className='text-3xl font-bold'>Bảng Giá Proxy Server</p>
+            </div>
+
           </>
         )}
 
@@ -303,6 +383,58 @@ const ProductsPageContent: React.FC = () => {
               )}
             </button>
           </div>
+        )}
+
+        {activeTab === ProductType.CLOUD_SERVER && (
+          <>
+            <div className="max-w-2xl mx-auto mb-16 space-y-4 text-center">
+              <p className='text-3xl font-bold'>CẤU HÌNH BỔ SUNG CLOUD SERVER</p>
+              <p className="text-slate-300 text-lg">THEO THÁNG</p>
+            </div>
+
+            <MotionDiv
+              className="grid md:grid-cols-4 grid-cols-2 max-w-7xl mx-auto  gap-4 md:gap-6 mb-16"
+            >
+              {cloudPlus.map(({ title, icon, desc, price }) => (
+                <div key={title} className="h-full rounded-2xl flex flex-col  items-center justify-center bg-[#121212] border border-white/5 hover:border-[#f97316]/50 transition-colors p-5 shadow-lg shadow-black/20">
+                  <div className="flex items-center gap-3 mb-3">
+                    {React.createElement(icon, { className: "w-10 h-10 text-[#f97316]" })}
+                  </div>
+                  <p className="text-slate-300 font-bold text-lg leading-relaxed">{title}</p>
+                  <div className="flex flex-row items-center justify-between mt-4 w-full p-4 border border-white/10 rounded-lg bg-[#0b0b0d]">
+                    <p className="text-white font-bold text-sm">{desc}</p>
+                    <p className="text-[#f97316] font-semibold text-sm">{price}</p>
+                  </div>
+                </div>
+              ))}
+            </MotionDiv>
+          </>
+        )}
+
+        {activeTab === ProductType.DEDICATED && (
+          <>
+            <div className="max-w-2xl mx-auto mb-16 space-y-4 text-center">
+              <p className='text-3xl font-bold'>CẤU HÌNH BỔ SUNG MÁY CHỦ VẬT LÝ</p>
+              <p className="text-slate-300 text-lg">THEO THÁNG</p>
+            </div>
+
+            <MotionDiv
+              className="grid md:grid-cols-4 grid-cols-2 max-w-7xl mx-auto  gap-4 md:gap-6 mb-16"
+            >
+              {dedicatePlus.map(({ title, icon, desc, price }) => (
+                <div key={title} className="h-full rounded-2xl flex flex-col  items-center justify-center bg-[#121212] border border-white/5 hover:border-[#f97316]/50 transition-colors p-5 shadow-lg shadow-black/20">
+                  <div className="flex items-center gap-3 mb-3">
+                    {React.createElement(icon, { className: "w-10 h-10 text-[#f97316]" })}
+                  </div>
+                  <p className="text-slate-300 font-bold text-lg leading-relaxed">{title}</p>
+                  <div className="flex flex-row items-center justify-between mt-4 w-full p-4 border border-white/10 rounded-lg bg-[#0b0b0d]">
+                    <p className="text-white font-bold text-sm">{desc}</p>
+                    <p className="text-[#f97316] font-semibold text-sm">{price}</p>
+                  </div>
+                </div>
+              ))}
+            </MotionDiv>
+          </>
         )}
 
         {/* Additional Info / FAQ */}

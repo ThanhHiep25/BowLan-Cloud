@@ -321,13 +321,13 @@ const TermsPage: React.FC = () => {
           {sections.map((section) => (
             <MotionDiv
               key={section.id}
-              className="bg-[#171717] border border-white/10 rounded-3xl p-6 md:p-8 hover:border-[#f97316]/30 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#f97316]/10"
+              className="bg-[#171717] border border-white/10 rounded-3xl p-6 md:p-8 transition-all duration-300 shadow-lg"
             >
               {/* Section Header */}
               <div className="flex items-center gap-4 mb-8 pb-6 border-b border-white/10">
               
                 <div>
-                  <h2 className="text-2xl md:text-3xl font-bold text-white">
+                  <h2 className="text-2xl md:text-3xl font-bold text-[#f97316]">
                     {section.id}. {section.title}
                   </h2>
                 </div>
@@ -338,7 +338,7 @@ const TermsPage: React.FC = () => {
                 {section.subsections.map((subsection, subIdx) => (
                   <MotionDiv
                     key={subIdx}
-                    className="rounded-2xl p-5 hover:border-[#0ea5e9]/20 transition-all duration-300 hover:bg-[#0a0a0a]/80"
+                    className="rounded-2xl p-5 "
                   >
                     <h3 className="text-xl font-bold text-[#0ea5e9] mb-4 flex items-center gap-2">
                       <span className="w-1 h-5 bg-[#f97316] rounded-full"></span>

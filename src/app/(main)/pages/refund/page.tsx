@@ -171,7 +171,7 @@ const RefundPolicyPage: React.FC = () => {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-[#f97316] mb-4">
             Chính Sách Hoàn Tiền
           </h1>
           <p className="text-lg text-gray-400 max-w-2xl mx-auto">
@@ -184,11 +184,11 @@ const RefundPolicyPage: React.FC = () => {
           {sections.map((section) => (
             <MotionSection
               key={section.id}
-              className="bg-[#171717] border border-white/10 rounded-3xl p-6 md:p-8 hover:border-[#f97316]/30 hover:shadow-xl hover:shadow-[#f97316]/10 transition-all duration-300"
+              className="bg-[#171717] border border-white/10 rounded-3xl p-6 md:p-8  transition-all duration-300"
             >
               {/* Section Title */}
               <div className="flex items-center gap-4 mb-6">
-                <h2 className="text-2xl md:text-3xl font-bold text-white">
+                <h2 className="text-2xl md:text-3xl font-bold text-[#f97316]">
                   {section.id}. {section.title}
                 </h2>
               </div>
@@ -198,7 +198,7 @@ const RefundPolicyPage: React.FC = () => {
                 {section.subsections.map((subsection, subIdx) => (
                   <MotionDiv
                     key={`${section.id}-${subIdx}`}
-                    className="rounded-2xl p-5 hover:border-[#0ea5e9]/20 hover:bg-[#0a0a0a]/80 transition-all duration-300"
+                    className="rounded-2xl p-5 transition-all duration-300"
                   >
                     <div className="flex items-start gap-3 mb-4">
                       <div className="w-1 h-5 bg-[#f97316] rounded-full shrink-0 mt-1"></div>

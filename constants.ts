@@ -11,7 +11,7 @@ export const PRODUCT_PLANS: ProductPlan[] = [
     disk: "20 GB SSD",
     bandwidth: "100/100 Mbps",
     type: ProductType.CLOUD_SERVER,
-    features: ["1 IP riêng", "Backup hàng ngày", "Window/Linux", "Hỗ trợ 24/7"],
+    features: ["1 IP riêng", "Backup hàng ngày", "Window/Linux", "Hỗ trợ 24/7",'Cấu hình tùy chỉnh (Giá cả thay đổi theo cấu hình)'],
   },
   {
     id: "cloud-2",
@@ -22,7 +22,7 @@ export const PRODUCT_PLANS: ProductPlan[] = [
     disk: "25 GB SSD",
     bandwidth: "100/100 Mbps",
     type: ProductType.CLOUD_SERVER,
-    features: ["1 IP riêng", "Backup hàng ngày", "Window/Linux", "Hỗ trợ 24/7"],
+    features: ["1 IP riêng", "Backup hàng ngày", "Window/Linux", "Hỗ trợ 24/7",'Cấu hình tùy chỉnh (Giá cả thay đổi theo cấu hình)'],
     popular: true,
   },
   {
@@ -34,7 +34,7 @@ export const PRODUCT_PLANS: ProductPlan[] = [
     disk: "30 GB SSD",
     bandwidth: "100/100 Mbps",
     type: ProductType.CLOUD_SERVER,
-    features: ["1 IP riêng", "Backup hàng ngày", "Window/Linux", "Hỗ trợ 24/7"],
+    features: ["1 IP riêng", "Backup hàng ngày", "Window/Linux", "Hỗ trợ 24/7",'Cấu hình tùy chỉnh (Giá cả thay đổi theo cấu hình)'],
   },
   {
     id: "cloud-4",
@@ -45,7 +45,7 @@ export const PRODUCT_PLANS: ProductPlan[] = [
     disk: "50 GB SSD",
     bandwidth: "100/100 Mbps",
     type: ProductType.CLOUD_SERVER,
-    features: ["1 IP riêng", "Backup hàng ngày", "Window/Linux", "Hỗ trợ 24/7"],
+    features: ["1 IP riêng", "Backup hàng ngày", "Window/Linux", "Hỗ trợ 24/7",'Cấu hình tùy chỉnh (Giá cả thay đổi theo cấu hình)'],
   },
   {
     id: "cloud-5",
@@ -56,7 +56,7 @@ export const PRODUCT_PLANS: ProductPlan[] = [
     disk: "70 GB SSD",
     bandwidth: "100/100 Mbps",
     type: ProductType.CLOUD_SERVER,
-    features: ["1 IP riêng", "Backup hàng ngày", "Window/Linux", "Hỗ trợ 24/7"],
+    features: ["1 IP riêng", "Backup hàng ngày", "Window/Linux", "Hỗ trợ 24/7",'Cấu hình tùy chỉnh (Giá cả thay đổi theo cấu hình)'],
   },
   {
     id: "cloud-6",
@@ -67,7 +67,7 @@ export const PRODUCT_PLANS: ProductPlan[] = [
     disk: "100 GB SSD",
     bandwidth: "100/100 Mbps",
     type: ProductType.CLOUD_SERVER,
-    features: ["1 IP riêng", "Backup hàng ngày", "Window/Linux", "Hỗ trợ 24/7"],
+    features: ["1 IP riêng", "Backup hàng ngày", "Window/Linux", "Hỗ trợ 24/7",'Cấu hình tùy chỉnh (Giá cả thay đổi theo cấu hình)'],
   },
   // Proxy
   {
