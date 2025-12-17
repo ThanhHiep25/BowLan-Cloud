@@ -327,14 +327,14 @@ export const NAV_LINKS: NavLinkItem[] = [
         )}`,
       },
       {
-        name: "Proxy Server",
-        path: `/pages/products?tab=${encodeURIComponent(ProductType.PROXY)}`,
-      },
-      {
         name: "Máy chủ vật lý",
         path: `/pages/products?tab=${encodeURIComponent(
           ProductType.DEDICATED
         )}`,
+      },
+      {
+        name: "Proxy Server",
+        path: `/pages/products?tab=${encodeURIComponent(ProductType.PROXY)}`,
       },
     ],
   },
