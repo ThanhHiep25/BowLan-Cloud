@@ -1,8 +1,9 @@
 export enum ProductType {
+  ANTI_DDOS = 'Anti-DDoS',
   CLOUD_SERVER = 'Cloud Server',
-  PROXY = 'Proxy Server',
   DEDICATED = 'Máy chủ vật lý',
-  ANTI_DDOS = 'Anti-DDoS'
+  PROXY = 'Proxy Server',
+  
 }
 
 export interface ProductPlan {
