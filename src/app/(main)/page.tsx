@@ -3,10 +3,9 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Shield, Zap, Globe, Clock, ArrowRight, Server, Cpu, Lock, Info, ChevronLeft, ChevronRight, Activity, Router, Network, MapPin, Building2 } from 'lucide-react';
+import { Shield, Zap, Globe, Clock, ArrowRight, Server, Cpu, Lock, Info, Activity, Router, Network, MapPin, Building2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import CircuitBoard from '@/components/cirboard/CircuitBoard';
-import { TESTIMONIALS } from '../../../constants';
 
 
 
@@ -50,15 +49,15 @@ const HomePage: React.FC = () => {
   
   const [bgImage, setBgImage] = useState(DEFAULT_BG_IMAGE);
   const [greeting, setGreeting] = useState('');
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+
 
   // SEO Optimization
   useEffect(() => {
-    document.title = "BowlanCloud - Dịch vụ Cloud Server, VPS & Anti-DDoS Tốc Độ Cao Số 1 VN";
+    document.title = "BowlanCloud - Dịch vụ Cloud Server, Proxy & Anti-DDoS Tốc Độ Cao Số 1 VN";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'BowlanCloud cung cấp dịch vụ cho thuê Cloud Server NVMe, VPS giá rẻ, Proxy và giải pháp chống DDoS chuyên nghiệp. Hạ tầng Tier 3, Peering đa hướng, hỗ trợ 24/7.');
+      metaDescription.setAttribute('content', 'BowlanCloud cung cấp dịch vụ cho thuê Cloud Server NVMe, Proxy và giải pháp chống DDoS chuyên nghiệp. Hạ tầng Tier 3, Peering đa hướng, hỗ trợ 24/7.');
     }
   }, []);
 
@@ -84,26 +83,11 @@ const HomePage: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Auto-play slider
-  useEffect(() => {
-    const timer = setInterval(() => {
-        setCurrentTestimonial((prev) => (prev + 1) % TESTIMONIALS.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const nextTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev + 1) % TESTIMONIALS.length);
-  };
- 
-  const prevTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
-  };
 
   return (
     <div className="bg-[#0a0a0a] overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 flex content-center items-center justify-center min-h-[85vh] lg:min-h-[90vh] overflow-hidden">
+      <section className="relative pt-32  pb-20 md:pt-40 md:pb-32 flex content-center items-center justify-center  overflow-hidden">
         {/* Background Overlay */}
         <div className="absolute inset-0 z-0 overflow-hidden">
             <div className="absolute inset-0 bg-[#0a0a0a]/85 z-10"></div>
@@ -131,9 +115,6 @@ const HomePage: React.FC = () => {
 
         <div className="container relative mx-auto px-4 z-20">
           <MotionDiv 
-            initial="hidden"
-            animate="visible"
-            variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.2 } } }}
             className="flex flex-wrap items-center justify-center text-center w-full lg:w-10/12 mx-auto"
           >
             <MotionDiv className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 rounded-full px-3 py-1 md:px-4 md:py-1.5 mb-6 backdrop-blur-sm hover:border-[#f97316]/50 transition-colors">
@@ -141,7 +122,7 @@ const HomePage: React.FC = () => {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#f97316] opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#f97316]"></span>
               </span>
-              <span className="text-slate-300 text-xs md:text-sm font-medium truncate max-w-[250px] sm:max-w-none">{greeting}! Giảm ngay 20% cho đăng ký mới</span>
+              <span className="text-slate-300 text-xs md:text-sm font-medium truncate max-w-[250px] sm:max-w-none">{greeting}! Giảm ngay 10% cho đăng ký mới</span>
             </MotionDiv>
             
             <MotionH1 className="text-white font-extrabold text-4xl sm:text-5xl md:text-7xl leading-tight mb-6 tracking-tight w-full">
@@ -150,7 +131,7 @@ const HomePage: React.FC = () => {
             </MotionH1>
             
             <MotionP className="mt-4 text-base sm:text-lg md:text-xl text-slate-400 mb-10 max-w-3xl mx-auto leading-relaxed px-4 w-full">
-              Cung cấp giải pháp thuê <strong>VPS giá rẻ</strong>, <strong>Cloud Server</strong>, <strong>Proxy IPv4/4G</strong> và máy chủ vật lý. 
+              Cung cấp giải pháp thuê <strong>Máy chủ vật lý</strong>, <strong>Cloud Server</strong>, <strong>Proxy</strong> và máy chủ vật lý. 
               Hệ thống quản lý tự động, khởi tạo trong 30 giây.
             </MotionP>
             
@@ -159,7 +140,7 @@ const HomePage: React.FC = () => {
                 <span className="relative z-10 flex items-center gap-2"><Zap size={20} /> Xem Bảng Giá</span>
                 <div className="absolute inset-0 bg-white/20 transform -translate-x-full skew-x-12 group-hover:animate-shine" />
               </Link>
-              <Link href="/pages/products" className="bg-[#0ea5e9] hover:bg-sky-600 text-white font-bold py-3.5 px-8 md:py-4 md:px-10 rounded-lg shadow-lg shadow-[#0ea5e9]/30 transition-all transform hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-2">
+              <Link href="#why-choose-us" className="bg-[#0ea5e9] hover:bg-sky-600 text-white font-bold py-3.5 px-8 md:py-4 md:px-10 rounded-lg shadow-lg shadow-[#0ea5e9]/30 transition-all transform hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-2">
                 <Info size={20} /> Tìm hiểu thêm
               </Link>
               <Link href="/pages/partners" className="bg-white/10 backdrop-blur-sm text-white border border-white/20 font-bold py-3.5 px-8 md:py-4 md:px-10 rounded-lg hover:bg-white/20 transition-all flex items-center justify-center gap-2 active:scale-95">
@@ -176,7 +157,7 @@ const HomePage: React.FC = () => {
            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
               {[
                 { label: "Khách hàng", value: "10k+", color: "text-[#f97316]" },
-                { label: "VPS Active", value: "50k+", color: "text-[#0ea5e9]" },
+                { label: "Cloud Server Active", value: "50k+", color: "text-[#0ea5e9]" },
                 { label: "Gbps Anti-DDoS", value: "200+", color: "text-green-500" },
                 { label: "Uptime SLA", value: "99.9%", color: "text-slate-400" }
               ].map((stat, idx) => (
@@ -190,12 +171,12 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Features Grid */}
-      <section className="py-16 md:py-24 bg-[#0a0a0a] relative">
+      <section className="py-16 md:py-24 bg-[#0a0a0a] relative" id="why-choose-us">
         <div className="container mx-auto px-4">
           <div 
             className="text-center mb-12 md:mb-16"
           >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 md:mb-6">Tại sao nên thuê Cloud VPS tại <span className="text-[#f97316]">BowLanCloud</span>?</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 md:mb-6">Tại sao nên thuê Cloud Server tại <span className="text-[#f97316]">BowLanCloud</span>?</h2>
             <p className="text-slate-400 max-w-2xl mx-auto text-base md:text-lg px-4">
               Chúng tôi cam kết mang lại chất lượng dịch vụ tốt nhất với chi phí tối ưu nhất cho doanh nghiệp của bạn.
             </p>
@@ -359,7 +340,7 @@ const HomePage: React.FC = () => {
           <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
             <div className="lg:w-1/2 w-full">
                <div className="relative">
-                  <div className="absolute -inset-4 bg-linear-to-r from-[#f97316]/50 to-[#0ea5e9]/50 rounded-2xl blur-lg opacity-10 animate-pulse"></div>
+                  <div className="absolute -inset-4 bg-linear-to-r rotate-6 from-[#f97316]/50 to-[#0ea5e9]/50 rounded-2xl blur-lg opacity-55"></div>
                   <Image
                     src="/data-center-16692836603261584616341.jpg"
                     alt="Server Room"
@@ -400,68 +381,7 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Testimonials Slider */}
-      <section className="py-16 md:py-20 bg-[#0a0a0a] relative overflow-hidden">
-        <div className="container mx-auto px-4">
-            <div 
-              className="text-center mb-12 md:mb-16"
-            >
-                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Khách hàng nói gì về chúng tôi?</h2>
-                <p className="text-slate-400">Hơn 10,000+ khách hàng đã tin tưởng sử dụng dịch vụ tại BowLanCloud.</p>
-            </div>
-
-            <div className="max-w-4xl mx-auto relative">
-                {/* Slider Content */}
-                <div 
-                   key={currentTestimonial}
-                   className="relative bg-[#171717] rounded-3xl p-6 md:p-12 border border-white/5 shadow-2xl"
-                >
-                    <div className="absolute -top-6 left-4 md:left-10 text-6xl text-[#f97316] opacity-20 font-serif">&ldquo;</div>
-                    
-                    <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8">
-                        <div className="shrink-0">
-                            {TESTIMONIALS[currentTestimonial].avatar && (
-                              <Image
-                                src={TESTIMONIALS[currentTestimonial].avatar}
-                                alt={TESTIMONIALS[currentTestimonial].name}
-                                width={96}
-                                height={96}
-                                className="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover border-2 border-[#f97316] p-1"
-                                loading="lazy"
-                              />
-                            )}
-                        </div>
-                        <div className="grow text-center md:text-left">
-                            <p className="text-base md:text-xl text-slate-300 italic mb-6 leading-relaxed">
-                                {TESTIMONIALS[currentTestimonial].quote}
-                            </p>
-                            <div>
-                                <h4 className="text-white font-bold text-lg">{TESTIMONIALS[currentTestimonial].name}</h4>
-                                <span className="text-[#f97316] text-sm font-medium">{TESTIMONIALS[currentTestimonial].role}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Controls */}
-                <div className="flex justify-center gap-4 mt-8">
-                    <button 
-                        aria-label="Previous Testimonial"
-                        onClick={prevTestimonial}
-                        className="p-3 rounded-full bg-white/5 hover:bg-[#f97316] text-white transition-all border border-white/10"
-                    >
-                        <ChevronLeft size={24} />
-                    </button>
-                    <button 
-                        aria-label="Next Testimonial"
-                        onClick={nextTestimonial}
-                        className="p-3 rounded-full bg-white/5 hover:bg-[#f97316] text-white transition-all border border-white/10"
-                    >
-                        <ChevronRight size={24} />
-                    </button>
-                </div>
-            </div>
-        </div>
-      </section>
+    
 
       {/* Call to Action */}
       <section className="py-16 md:py-20 bg-[#0a0a0a]">
@@ -470,16 +390,16 @@ const HomePage: React.FC = () => {
              <div className="absolute top-0 right-0 -mt-20 -mr-20 w-64 md:w-80 h-64 md:h-80 bg-[#f97316]/20 rounded-full blur-[100px]"></div>
              <div className="absolute bottom-0 left-0 -mb-20 -ml-20 w-64 md:w-80 h-64 md:h-80 bg-[#0ea5e9]/20 rounded-full blur-[100px]"></div>
              
-             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-10 text-center md:text-left">
-                <div className="md:w-2/3">
+             <div className="relative z-10 flex flex-col md:flex-col items-center justify-center gap-10 text-center md:text-left">
+                <div className="text-center">
                   <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Sẵn sàng triển khai dự án của bạn?</h2>
                   <p className="text-slate-400 text-base md:text-lg">
-                    Khởi tạo VPS/Cloud Server ngay lập tức với hệ thống tự động hóa 100%. 
+                    Khởi tạo Cloud Server ngay lập tức với hệ thống tự động hóa 100%. 
                     Dùng thử miễn phí 3 ngày đầu tiên.
                   </p>
                 </div>
-                <div className="md:w-1/3 flex justify-center md:justify-end">
-                   <Link href="/pages/products" className="group flex items-center gap-2 bg-[#f97316] text-white font-bold py-4 px-8 rounded-lg hover:bg-[#ea580c] shadow-lg shadow-[#f97316]/30 transition-all active:scale-95">
+                <div className=" flex justify-center md:justify-center w-full">
+                   <Link href="/pages/products" className="group w-60 flex items-center justify-center gap-2 bg-[#f97316] text-white font-bold py-4 px-8 rounded-lg hover:bg-[#ea580c] shadow-lg shadow-[#f97316]/30 transition-all active:scale-95">
                         Đăng Ký Ngay <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                    </Link>
                 </div>

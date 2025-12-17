@@ -94,11 +94,6 @@ const Navbar: React.FC = () => {
     router.push('/');
   };
 
-  // const navbarVariants = {
-  //   hidden: { y: -100, opacity: 0 },
-  //   visible: { y: 0, opacity: 1, transition: { duration: 0.5 } }
-  // };
-
   const mobileMenuVariants = {
     closed: { y: "100%", opacity: 0 },
     open: { y: 0, opacity: 1, transition: { type: "spring" as const, stiffness: 400, damping: 30 } }
@@ -168,7 +163,7 @@ const Navbar: React.FC = () => {
                         {pathname === link.path && (
                           <MotionDiv
                             layoutId="activeTab"
-                            className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#f97316] mx-4"
+                            className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#f97316] mx-4 rounded-full"
                           />
                         )}
                       </Link>

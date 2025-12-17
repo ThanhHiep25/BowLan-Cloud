@@ -1,7 +1,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Check, Server, Shield, Globe, Cpu, Box } from 'lucide-react';
+import { Check, Server, Shield, Globe, Box } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { ProductPlan } from '../../../types';
 
@@ -16,7 +16,6 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ plan }) => {
   const getIcon = () => {
     switch (plan.type) {
       case 'Cloud Server': return <Server className="h-10 w-10 text-[#0ea5e9]" />;
-      case 'VPS': return <Cpu className="h-10 w-10 text-[#f97316]" />;
       case 'Proxy Server': return <Globe className="h-10 w-10 text-green-400" />;
       case 'Anti-DDoS': return <Shield className="h-10 w-10 text-red-500" />;
       case 'Máy chủ vật lý': return <Box className="h-10 w-10 text-orange-300" />;

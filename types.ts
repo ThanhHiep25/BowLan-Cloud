@@ -1,6 +1,5 @@
 export enum ProductType {
   CLOUD_SERVER = 'Cloud Server',
-  VPS = 'VPS',
   PROXY = 'Proxy Server',
   DEDICATED = 'Máy chủ vật lý',
   ANTI_DDOS = 'Anti-DDoS'

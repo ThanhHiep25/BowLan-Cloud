@@ -1,7 +1,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Facebook, Twitter, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
+import { Facebook,Mail, Phone, MapPin, Send } from 'lucide-react';
 import Image from 'next/image';
 
 const Footer: React.FC = () => {
@@ -18,12 +18,12 @@ const Footer: React.FC = () => {
               <span className="text-2xl font-bold text-white">BowlanCloud</span>
             </div>
             <p className="text-slate-400 text-sm mb-6 leading-relaxed">
-              Nhà cung cấp giải pháp hạ tầng Cloud Server, VPS và Anti-DDoS chất lượng cao hàng đầu Việt Nam.
+              Nhà cung cấp giải pháp hạ tầng Cloud Server, Proxy và Anti-DDoS chất lượng cao hàng đầu Việt Nam.
             </p>
             <div className="flex space-x-4">
-              <a href="https://www.facebook.com/" aria-label="Facebook" title="Facebook" className="text-slate-400 hover:text-[#f97316] transition-colors bg-white/5 p-2 rounded-full"><Facebook size={18} /></a>
-              <a href="https://twitter.com/" aria-label="Twitter" title="Twitter" className="text-slate-400 hover:text-[#f97316] transition-colors bg-white/5 p-2 rounded-full"><Twitter size={18} /></a>
-              <a href="https://www.linkedin.com/" aria-label="LinkedIn" title="LinkedIn"  className="text-slate-400 hover:text-[#f97316]   transition-colors bg-white/5 p-2 rounded-full"><Linkedin size={18} /></a>
+              <a href="https://www.facebook.com/" aria-label="Facebook" title="Facebook" className="text-slate-400 hover:text-[#f97316] flex items-center justify-center transition-colors bg-white/5 h-14 w-14 p-2 rounded-full"><Facebook size={18} /></a>
+              <a href="https://twitter.com/" aria-label="Twitter" title="Twitter" className="text-slate-400 hover:text-[#f97316] flex items-center justify-center transition-colors bg-white/5 h-14 w-14 p-2 rounded-full">Zalo</a>
+              <a href="https://www.linkedin.com/" aria-label="LinkedIn" title="LinkedIn"  className="text-slate-400 hover:text-[#f97316]  flex items-center justify-center transition-colors bg-white/5 h-14 w-14 p-2 rounded-full"><Send size={18} /></a>
             </div>
           </div>
 
@@ -31,11 +31,10 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-white font-bold text-lg mb-6 border-l-4 border-[#f97316] pl-3">Dịch vụ</h3>
             <ul className="space-y-3">
-              <li><Link href="/pages/products?tab=Cloud%20Server" className="text-slate-400 hover:text-[#f97316] text-sm transition-colors">Cloud Server NVMe</Link></li>
-              <li><Link href="/pages/products?tab=VPS" className="text-slate-400 hover:text-[#f97316] text-sm transition-colors">VPS Hosting Giá Rẻ</Link></li>
-              <li><Link href="/pages/products?tab=Proxy%20Server" className="text-slate-400 hover:text-[#f97316] text-sm transition-colors">Private Proxy IPv4</Link></li>
+              <li><Link href="/pages/products?tab=Cloud%20Server" className="text-slate-400 hover:text-[#f97316] text-sm transition-colors">Cloud Server</Link></li>
+              <li><Link href="/pages/products?tab=Proxy%20Server" className="text-slate-400 hover:text-[#f97316] text-sm transition-colors">Private Proxy</Link></li>
               <li><Link href="/pages/products?tab=Máy%20chủ%20vật%20lý" className="text-slate-400 hover:text-[#f97316] text-sm transition-colors">Thuê Máy Chủ Vật Lý</Link></li>
-              <li><Link href="/pages/products?tab=Anti-DDoS" className="text-slate-400 hover:text-[#f97316] text-sm transition-colors">Anti-DDoS Game/Web</Link></li>
+              <li><Link href="/pages/products?tab=Anti-DDoS" className="text-slate-400 hover:text-[#f97316] text-sm transition-colors">Anti-DDoS</Link></li>
             </ul>
           </div>
 

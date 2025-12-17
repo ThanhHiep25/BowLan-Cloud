@@ -1,8 +1,8 @@
 'use client';
-import React, { useMemo, useState, Suspense } from 'react';
+import React, { useMemo, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { Calendar, User, ArrowRight, Search, XCircle, CheckCircle, AlertCircle, Loader2, Facebook, Twitter, Linkedin } from 'lucide-react';
+import { Calendar, User, ArrowRight, Search, XCircle, Loader2, Facebook, Twitter, Linkedin } from 'lucide-react';
 import { BLOG_POSTS } from '@/constants';
 import type { BlogPost } from '@/types';
 
@@ -11,10 +11,6 @@ const BlogPageContent: React.FC = () => {
     const router = useRouter();
     const searchQuery = searchParams.get('q') || '';
 
-    // Newsletter State
-    const [email, setEmail] = useState('');
-    const [submitStatus, setSubmitStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-    const [message, setMessage] = useState('');
 
     const filteredPosts = useMemo(() => {
         if (!searchQuery) return BLOG_POSTS;
@@ -42,36 +38,6 @@ const BlogPageContent: React.FC = () => {
             }
         }
     }, []);
-
-
-    const handleSubscribe = (e: React.FormEvent) => {
-        e.preventDefault();
-        setSubmitStatus('idle');
-        setMessage('');
-
-        if (!email) {
-            setSubmitStatus('error');
-            setMessage('Vui lòng nhập địa chỉ email.');
-            return;
-        }
-
-        // Simple email regex validation
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            setSubmitStatus('error');
-            setMessage('Vui lòng nhập một địa chỉ email hợp lệ.');
-            return;
-        }
-
-        setSubmitStatus('loading');
-
-        // Simulate API request
-        setTimeout(() => {
-            setSubmitStatus('success');
-            setMessage('Đăng ký thành công! Vui lòng kiểm tra email để nhận mã giảm giá.');
-            setEmail('');
-        }, 1500);
-    };
 
     const handleShare = (platform: 'facebook' | 'twitter' | 'linkedin', post: BlogPost, e: React.MouseEvent) => {
         e.preventDefault();
@@ -221,64 +187,7 @@ const BlogPageContent: React.FC = () => {
                     </div>
                 )}
 
-                {/* Newsletter */}
-                <div className="mt-20 md:mt-24 bg-linear-to-r from-[#171717] to-[#111] border border-white/10 rounded-3xl p-6 sm:p-8 md:p-12 text-center relative overflow-hidden">
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-[#0ea5e9]/10 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
-
-                    <div className="relative z-10">
-                        <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">Đăng ký nhận tin khuyến mãi</h3>
-                        <p className="text-slate-400 mb-8 max-w-xl mx-auto text-sm md:text-base">Nhận ngay voucher giảm giá 50% và các bài viết kỹ thuật chuyên sâu hàng tuần.</p>
-
-                        <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row max-w-md mx-auto gap-4 relative">
-                            <div className="grow relative">
-                                <input
-                                    type="text"
-                                    value={email}
-                                    onChange={(e) => {
-                                        setEmail(e.target.value);
-                                        if (submitStatus !== 'idle') setSubmitStatus('idle');
-                                    }}
-                                    placeholder="Nhập email của bạn..."
-                                    disabled={submitStatus === 'loading' || submitStatus === 'success'}
-                                    className={`w-full bg-black/50 border text-white rounded-lg px-4 py-3 focus:outline-none focus:border-[#f97316] placeholder-slate-500 transition-colors disabled:opacity-50 ${submitStatus === 'error' ? 'border-red-500' :
-                                        submitStatus === 'success' ? 'border-green-500' : 'border-slate-700'
-                                        }`}
-                                />
-                                {submitStatus === 'error' && (
-                                    <AlertCircle className="absolute right-3 top-3.5 text-red-500 h-5 w-5 animate-in fade-in" />
-                                )}
-                                {submitStatus === 'success' && (
-                                    <CheckCircle className="absolute right-3 top-3.5 text-green-500 h-5 w-5 animate-in fade-in" />
-                                )}
-                            </div>
-
-                            <button
-                                type="submit"
-                                aria-label="Subscribe"
-                                disabled={submitStatus === 'loading' || submitStatus === 'success'}
-                                className={`bg-[#0ea5e9] text-white font-bold py-3 px-6 rounded-lg hover:bg-cyan-600 transition-all shadow-lg shadow-[#0ea5e9]/20 min-w-[120px] flex justify-center items-center disabled:opacity-70 disabled:cursor-not-allowed ${submitStatus === 'success' ? 'bg-green-600 hover:bg-green-700 shadow-green-500/20' : ''
-                                    }`}
-                            >
-                                {submitStatus === 'loading' ? (
-                                    <Loader2 className="h-5 w-5 animate-spin" />
-                                ) : submitStatus === 'success' ? (
-                                    "Đã đăng ký"
-                                ) : (
-                                    "Đăng ký"
-                                )}
-                            </button>
-                        </form>
-
-                        {/* Feedback Message */}
-                        {submitStatus !== 'idle' && message && (
-                            <p className={`mt-4 text-sm font-medium animate-in fade-in slide-in-from-top-2 ${submitStatus === 'error' ? 'text-red-400' :
-                                submitStatus === 'success' ? 'text-green-400' : 'text-slate-400'
-                                }`}>
-                                {message}
-                            </p>
-                        )}
-                    </div>
-                </div>
+               
             </div>
         </div>
     );

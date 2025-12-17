@@ -181,37 +181,28 @@ const RefundPolicyPage: React.FC = () => {
 
         {/* Content Sections */}
         <div className="space-y-6">
-          {sections.map((section, idx) => (
+          {sections.map((section) => (
             <MotionSection
               key={section.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.05 }}
-              viewport={{ once: true }}
               className="bg-[#171717] border border-white/10 rounded-3xl p-6 md:p-8 hover:border-[#f97316]/30 hover:shadow-xl hover:shadow-[#f97316]/10 transition-all duration-300"
             >
               {/* Section Title */}
               <div className="flex items-center gap-4 mb-6">
-                <div className="text-[#f97316]">{section.icon}</div>
                 <h2 className="text-2xl md:text-3xl font-bold text-white">
                   {section.id}. {section.title}
                 </h2>
               </div>
 
               {/* Subsections Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 gap-6">
                 {section.subsections.map((subsection, subIdx) => (
                   <MotionDiv
                     key={`${section.id}-${subIdx}`}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: (idx * 0.05) + (subIdx * 0.05) }}
-                    viewport={{ once: true }}
-                    className="bg-[#0a0a0a]/50 border border-white/5 rounded-2xl p-5 hover:border-[#0ea5e9]/20 hover:bg-[#0a0a0a]/80 transition-all duration-300"
+                    className="rounded-2xl p-5 hover:border-[#0ea5e9]/20 hover:bg-[#0a0a0a]/80 transition-all duration-300"
                   >
                     <div className="flex items-start gap-3 mb-4">
                       <div className="w-1 h-5 bg-[#f97316] rounded-full shrink-0 mt-1"></div>
-                      <h3 className="text-lg md:text-xl font-semibold text-white">
+                      <h3 className="text-xl font-semibold text-white">
                         {subsection.title}
                       </h3>
                     </div>
@@ -221,7 +212,7 @@ const RefundPolicyPage: React.FC = () => {
                       {subsection.items.map((item, itemIdx) => (
                         <li
                           key={itemIdx}
-                          className="flex items-start gap-3 text-gray-300 text-sm md:text-base"
+                          className="flex items-start gap-3 text-gray-300 text-lg"
                         >
                           <span className="w-1.5 h-1.5 bg-[#0ea5e9]/50 rounded-full shrink-0 mt-2"></span>
                           <span>{item}</span>

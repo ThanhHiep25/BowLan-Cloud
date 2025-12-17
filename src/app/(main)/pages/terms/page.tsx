@@ -303,9 +303,6 @@ const TermsPage: React.FC = () => {
       <div className="container mx-auto px-4">
         {/* Header */}
         <MotionSection
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
@@ -320,20 +317,15 @@ const TermsPage: React.FC = () => {
         </MotionSection>
 
         {/* Content */}
-        <div className="max-w-4xl mx-auto space-y-6">
-          {sections.map((section, idx) => (
+        <div className="max-w-7xl mx-auto space-y-6">
+          {sections.map((section) => (
             <MotionDiv
               key={section.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.05 }}
               className="bg-[#171717] border border-white/10 rounded-3xl p-6 md:p-8 hover:border-[#f97316]/30 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#f97316]/10"
             >
               {/* Section Header */}
               <div className="flex items-center gap-4 mb-8 pb-6 border-b border-white/10">
-                <div className="flex items-center justify-center w-14 h-14 rounded-full bg-[#f97316]/20 text-[#f97316] hover:bg-[#f97316]/30 transition-colors">
-                  {section.icon}
-                </div>
+              
                 <div>
                   <h2 className="text-2xl md:text-3xl font-bold text-white">
                     {section.id}. {section.title}
@@ -342,16 +334,13 @@ const TermsPage: React.FC = () => {
               </div>
 
               {/* Subsections Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 gap-6">
                 {section.subsections.map((subsection, subIdx) => (
                   <MotionDiv
                     key={subIdx}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: (idx * 0.05) + (subIdx * 0.05) }}
-                    className="bg-[#0a0a0a]/50 border border-white/5 rounded-2xl p-5 hover:border-[#0ea5e9]/20 transition-all duration-300 hover:bg-[#0a0a0a]/80"
+                    className="rounded-2xl p-5 hover:border-[#0ea5e9]/20 transition-all duration-300 hover:bg-[#0a0a0a]/80"
                   >
-                    <h3 className="text-lg font-bold text-[#0ea5e9] mb-4 flex items-center gap-2">
+                    <h3 className="text-xl font-bold text-[#0ea5e9] mb-4 flex items-center gap-2">
                       <span className="w-1 h-5 bg-[#f97316] rounded-full"></span>
                       {subsection.title}
                     </h3>
@@ -362,7 +351,7 @@ const TermsPage: React.FC = () => {
                           className="flex gap-3 items-start text-slate-300 text-sm leading-relaxed"
                         >
                           <span className="shrink-0 w-1.5 h-1.5 rounded-full bg-[#f97316]/60 mt-2"></span>
-                          <span className="hover:text-slate-200 transition-colors">{item}</span>
+                          <span className="hover:text-slate-200 transition-colors text-lg">{item}</span>
                         </li>
                       ))}
                     </ul>

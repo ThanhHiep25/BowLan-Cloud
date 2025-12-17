@@ -32,7 +32,7 @@ const ProductsPageContent: React.FC = () => {
   React.useEffect(() => {
     // Client-side only
     if (typeof document !== 'undefined') {
-      document.title = "Bảng Giá Thuê VPS, Cloud Server & Proxy Mới Nhất | BowlanCloud";
+      document.title = "Bảng Giá Thuê Cloud Server & Proxy Mới Nhất | BowlanCloud";
       
       const metaDescription = document.querySelector('meta[name="description"]');
       if (metaDescription) {
@@ -89,7 +89,7 @@ const ProductsPageContent: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-             <h1 className="text-3xl md:text-5xl font-bold text-white mb-6">Bảng Giá Thuê <span className="text-gradient">Cloud Server</span> & VPS</h1>
+             <h1 className="text-3xl md:text-5xl font-bold text-white mb-6">Bảng Giá Thuê <span className="text-gradient">Cloud Server</span> & Proxy</h1>
              <p className="text-slate-400 text-base md:text-lg max-w-3xl mx-auto">
                Hệ thống bảng giá minh bạch, không phí ẩn. 
                Cam kết hoàn tiền trong 7 ngày nếu không hài lòng với chất lượng dịch vụ.

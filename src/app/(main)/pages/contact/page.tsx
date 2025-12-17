@@ -1,11 +1,7 @@
 import { Mail, Phone, MessageCircle, Send, MapPin, Clock, Globe } from "lucide-react"
 import type { Metadata } from "next"
-import dynamic from "next/dynamic"
 
-const ContactForm = dynamic(() => import("../../../../components/contact/ContactForm"), {
-    loading: () => <div className="w-full h-96 bg-[#171717] rounded-3xl animate-pulse" />,
-    ssr: true,
-})
+
 
 export const metadata: Metadata = {
     title: "Liên Hệ BOWLAN Cloud - Hỗ Trợ 24/7",
@@ -113,7 +109,7 @@ export default function ContactPage() {
                 {/* Hero Section */}
                 <div className="text-center mb-16">
                     <h1 className="text-4xl md:text-5xl font-bold mb-6 text-transparent bg-clip-text" style={{ backgroundImage: 'linear-gradient(90deg, #f97316 0%, #0ea5e9 100%)' }}>
-                        Liên Hệ BOWLAN Cloud
+                        Liên Hệ Bowlan Cloud
                     </h1>
                     <p className="text-xl text-gray-300 mb-2">
                         Chúng tôi luôn sẵn sàng lắng nghe và hỗ trợ bạn
@@ -175,21 +171,7 @@ export default function ContactPage() {
                             </div>
                         )
                     })}
-                </div>
-
-                {/* Contact Form Section */}
-                <div className="max-w-3xl mx-auto">
-                    <div className="bg-[#171717] rounded-3xl p-8 md:p-10 border border-[#f97316]/20">
-                        <h2 className="text-3xl font-bold mb-2 text-center text-white">
-                            Gửi Tin Nhắn Cho Chúng Tôi
-                        </h2>
-                        <p className="text-gray-400 text-center mb-8">
-                            Điền biểu mẫu dưới đây, chúng tôi sẽ phản hồi trong 24 giờ
-                        </p>
-                        <ContactForm />
-                    </div>
-                </div>
-
+                </div>   
                 {/* Structured Data for Local Business */}
                 <script
                     type="application/ld+json"
