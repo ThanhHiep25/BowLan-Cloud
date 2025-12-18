@@ -75,7 +75,7 @@ const BlogDetailPage: React.FC = (): React.ReactNode => {
                                 <span className="text-xs font-mono text-slate-400">{block.language || 'code'}</span>
                                 <button
                                     onClick={() => copyToClipboard(block.content || '')}
-                                    className="p-1.5 hover:bg-white/10 rounded transition-colors"
+                                    className="p-1.5 hover:bg-white/10 rounded transition-colors cursor-pointer"
                                     title="Copy code"
                                 >
                                     {copiedCode === block.content ? (
