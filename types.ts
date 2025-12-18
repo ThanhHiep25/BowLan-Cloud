@@ -19,6 +19,17 @@ export interface ProductPlan {
   popular?: boolean;
 }
 
+// Content block types for blog posts
+export type ContentBlockType = 'heading2' | 'heading3' | 'paragraph' | 'list' | 'code' | 'blockquote';
+
+export interface ContentBlock {
+  type: ContentBlockType;
+  content?: string;
+  items?: string[]; // for lists
+  language?: string; // for code blocks
+  title?: string; // for headings
+}
+
 export interface BlogPost {
   id: string;
   title: string;
@@ -27,6 +38,7 @@ export interface BlogPost {
   author: string;
   category: string;
   imageUrl: string;
+  content: ContentBlock[];
 }
 
 export interface PartnerBenefit {

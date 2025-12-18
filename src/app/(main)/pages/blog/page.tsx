@@ -135,7 +135,7 @@ const BlogPageContent: React.FC = () => {
                                     </p>
 
                                     <div className="mt-auto pt-6 flex items-center justify-between border-t border-white/5">
-                                        <a href="#" className="inline-flex items-center text-[#f97316] font-bold hover:text-[#ea580c] text-sm transition-colors">
+                                        <a href={`/pages/blog/${post.id}`} className="inline-flex items-center text-[#f97316] font-bold hover:text-[#ea580c] text-sm transition-colors">
                                             Đọc tiếp <ArrowRight size={16} className="ml-1 group-hover:translate-x-1 transition-transform" />
                                         </a>
 
