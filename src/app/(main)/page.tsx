@@ -1,19 +1,17 @@
+
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Shield, Zap, Globe, Clock, ArrowRight, Server, Cpu, Lock, Info, Activity, Router, Network, MapPin, Building2 } from 'lucide-react';
-import { motion } from 'framer-motion';
-import CircuitBoard from '@/components/cirboard/CircuitBoard';
 
 
 
 
 
-const MotionDiv = motion.div;
-const MotionH1 = motion.h1;
-const MotionP = motion.p;
+
+// Use native elements to avoid animation/runtime overhead
 
 const features = [
   {
@@ -44,98 +42,48 @@ const features = [
 // };
 
 const HomePage: React.FC = () => {
-  // Default server-rendered value (neutral evening image)
-  const DEFAULT_BG_IMAGE = '/bg-nav/photo-1451187580459-43490279c0fa.avif';
-  
-  const [bgImage, setBgImage] = useState(DEFAULT_BG_IMAGE);
-  const [greeting, setGreeting] = useState('');
 
 
   // SEO Optimization
   useEffect(() => {
     document.title = "BowlanCloud - Dịch vụ Cloud Server, Proxy & Anti-DDoS Tốc Độ Cao Số 1 VN";
-    
+
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute('content', 'BowlanCloud cung cấp dịch vụ cho thuê Cloud Server NVMe, Proxy và giải pháp chống DDoS chuyên nghiệp. Hạ tầng Tier 3, Peering đa hướng, hỗ trợ 24/7.');
     }
   }, []);
 
-  // Initialize time-based content after hydration (client-side only)
-  useEffect(() => {
-    const updateTimeBasedContent = () => {
-      const hour = new Date().getHours();
-      
-      if (hour >= 5 && hour < 12) {
-        setBgImage('/bg-nav/photo-1518770660439-4636190af475.avif'); 
-        setGreeting('Chào buổi sáng');
-      } else if (hour >= 12 && hour < 18) {
-        setBgImage('/bg-nav/photo-1550751827-4bd374c3f58b.avif');
-        setGreeting('Chào buổi chiều');
-      } else {
-        setBgImage('/bg-nav/photo-1451187580459-43490279c0fa.avif');
-        setGreeting('Chào buổi tối');
-      }
-    };
 
-    updateTimeBasedContent();
-    const interval = setInterval(updateTimeBasedContent, 60000); 
-    return () => clearInterval(interval);
-  }, []);
 
 
   return (
     <div className="bg-[#0a0a0a] overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative pt-32  pb-20 md:pt-40 md:pb-32 flex content-center items-center justify-center  overflow-hidden">
+      <section className="relative pt-0 h-screen pb-30 md:pt-10 md:pb-32 flex flex-col content-center items-center justify-center  overflow-hidden">
         {/* Background Overlay */}
         <div className="absolute inset-0 z-0 overflow-hidden">
-            <div className="absolute inset-0 bg-[#0a0a0a]/85 z-10"></div>
-            
-            {/* Circuit Board Effect - Hidden on mobile for performance */}
-            <div className="hidden lg:block absolute inset-0 z-11 opacity-20 mix-blend-screen pointer-events-none">
-               <CircuitBoard color="#f97316" />
-            </div>
-
-            {bgImage && (
-              <Image
-                src={bgImage}
-                alt="Hero Background"
-                fill
-                className="absolute -top-[20%] left-0 w-full h-[140%] object-cover opacity-50"
-                priority
-                fetchPriority="high"
-                sizes="100vw"
-                quality={80}
-              />
-            )}
-            <div className="absolute top-1/4 right-1/4 w-64 h-64 md:w-96 md:h-96 bg-[#f97316]/20 rounded-full blur-[100px] md:blur-[128px] z-10" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 md:w-96 md:h-96 bg-[#0ea5e9]/20 rounded-full blur-[100px] md:blur-[128px] z-10" />
+          <div className="absolute inset-0 bg-[#0a0a0a]/85 z-10"></div>
+          <div className="absolute top-1/4 right-1/4 w-64 h-64 md:w-96 md:h-96 z-10 rounded-full" style={{ background: 'radial-gradient(closest-side, rgba(249,115,22,0.25), rgba(249,115,22,0) 70%)' }} />
+          <div className="absolute bottom-0 left-0 w-64 h-64 md:w-96 md:h-96 z-10 rounded-full" style={{ background: 'radial-gradient(closest-side, rgba(14,165,233,0.25), rgba(14,165,233,0) 70%)' }} />
         </div>
 
         <div className="container relative mx-auto px-4 z-20">
-          <MotionDiv 
+          <div
             className="flex flex-wrap items-center justify-center text-center w-full lg:w-10/12 mx-auto"
           >
-            <MotionDiv className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 rounded-full px-3 py-1 md:px-4 md:py-1.5 mb-6 backdrop-blur-sm hover:border-[#f97316]/50 transition-colors">
-              <span className="flex h-2 w-2 relative">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#f97316] opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#f97316]"></span>
-              </span>
-              <span className="text-slate-300 text-xs md:text-sm font-medium truncate max-w-[250px] sm:max-w-none">{greeting}! Giảm ngay 10% cho đăng ký mới</span>
-            </MotionDiv>
-            
-            <MotionH1 className="text-white font-extrabold text-4xl sm:text-5xl md:text-7xl leading-tight mb-6 tracking-tight w-full">
-              Nền Tảng <span className="text-gradient">Cloud Server</span> & <br className="hidden md:block"/>
+
+            <h1 className="text-white font-extrabold text-4xl sm:text-5xl md:text-7xl leading-tight mb-2 md:mb-6 tracking-tight w-full">
+              Nền Tảng <span className="text-gradient">Cloud Server</span> & <br className="hidden md:block" />
               <span className="text-white">Anti-DDoS</span> Số 1 Việt Nam
-            </MotionH1>
-            
-            <MotionP className="mt-4 text-base sm:text-lg md:text-xl text-slate-400 mb-10 max-w-3xl mx-auto leading-relaxed px-4 w-full">
-              Cung cấp giải pháp thuê <strong>Máy chủ vật lý</strong>, <strong>Cloud Server</strong>, <strong>Proxy</strong> và máy chủ vật lý. 
+            </h1>
+
+            <p className="mt-4 text-base sm:text-lg md:text-xl text-slate-400 mb-4 md:mb-10 max-w-3xl mx-auto leading-relaxed px-4 w-full">
+              Cung cấp giải pháp thuê <strong>Máy chủ vật lý</strong>, <strong>Cloud Server</strong>, <strong>Proxy</strong> và máy chủ vật lý.
               Hệ thống quản lý tự động, khởi tạo trong 30 giây.
-            </MotionP>
-            
-            <MotionDiv className="flex flex-col sm:flex-row justify-center gap-4 px-4 sm:px-0 w-full">
+            </p>
+
+            <div className="flex flex-col sm:flex-row justify-center gap-4 px-4 sm:px-0 w-full">
               <Link href="/pages/products" className="relative overflow-hidden group bg-[#f97316] text-white font-bold py-3.5 px-8 md:py-4 md:px-10 rounded-lg shadow-lg shadow-[#f97316]/30 transition-all flex items-center justify-center gap-2 transform hover:-translate-y-1 active:scale-95">
                 <span className="relative z-10 flex items-center gap-2"><Zap size={20} /> Xem Bảng Giá</span>
                 <div className="absolute inset-0 bg-white/20 transform -translate-x-full skew-x-12 group-hover:animate-shine" />
@@ -143,16 +91,34 @@ const HomePage: React.FC = () => {
               <Link href="#why-choose-us" className="bg-[#0ea5e9] hover:bg-sky-600 text-white font-bold py-3.5 px-8 md:py-4 md:px-10 rounded-lg shadow-lg shadow-[#0ea5e9]/30 transition-all transform hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-2">
                 <Info size={20} /> Tìm hiểu thêm
               </Link>
-              <Link href="/pages/partners" className="bg-white/10 backdrop-blur-sm text-white border border-white/20 font-bold py-3.5 px-8 md:py-4 md:px-10 rounded-lg hover:bg-white/20 transition-all flex items-center justify-center gap-2 active:scale-95">
+              <Link href="/pages/partners" className="bg-white/10 text-white border border-white/20 font-bold py-3.5 px-8 md:py-4 md:px-10 rounded-lg hover:bg-white/20 transition-all flex items-center justify-center gap-2 active:scale-95">
                 <ArrowRight size={20} /> Đối tác
               </Link>
-            </MotionDiv>
-          </MotionDiv>
+            </div>
+          </div>
+        </div>
+
+        <div className="py-3 md:py-8 bg-[#171717] border-y border-white/5 w-full bottom-0 absolute" style={{ contain: 'layout style paint' }}>
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 text-center">
+              {[
+                { label: "Khách hàng", value: "10k+", color: "text-[#f97316]" },
+                { label: "Cloud Server Active", value: "50k+", color: "text-[#0ea5e9]" },
+                { label: "Gbps Anti-DDoS", value: "200+", color: "text-green-500" },
+                { label: "Uptime SLA", value: "99.9%", color: "text-slate-400" }
+              ].map((stat, idx) => (
+                <div key={idx} className="p-1 md:p-2">
+                  <div className="text-3xl md:text-4xl font-bold text-white mb-2">{stat.value}</div>
+                  <div className={`${stat.color} text-xs md:text-sm font-semibold uppercase tracking-wider`}>{stat.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Stats Section */}
-      <section className="py-10 bg-[#171717] border-y border-white/5" style={{ contain: 'layout style paint' }}>
+      {/* <section className="py-10 bg-[#171717] border-y border-white/5" style={{ contain: 'layout style paint' }}>
          <div className="container mx-auto px-4">
            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
               {[
@@ -168,12 +134,12 @@ const HomePage: React.FC = () => {
               ))}
            </div>
          </div>
-      </section>
+      </section> */}
 
       {/* Features Grid */}
-      <section className="py-16 md:py-24 bg-[#0a0a0a] relative" id="why-choose-us">
+      <section className="py-16 md:py-24 bg-[#0a0a0a] relative" id="why-choose-us" style={{ contentVisibility: 'auto', contain: 'layout paint style' }}>
         <div className="container mx-auto px-4">
-          <div 
+          <div
             className="text-center mb-12 md:mb-16"
           >
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 md:mb-6">Tại sao nên thuê Cloud Server tại <span className="text-[#f97316]">BowLanCloud</span>?</h2>
@@ -183,7 +149,7 @@ const HomePage: React.FC = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {features.map((feature, idx) => (
-              <article 
+              <article
                 key={idx}
                 className="group bg-[#171717] p-6 md:p-8 rounded-2xl border border-white/5 hover:border-[#f97316]/50 transition-colors duration-300 hover:shadow-xl hover:shadow-[#f97316]/10"
               >
@@ -199,158 +165,154 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Infrastructure & Peering Section */}
-      <section className="py-16 md:py-24 bg-[#171717] border-y border-white/5 relative overflow-hidden">
-         {/* Circuit Board Effect - Hidden on mobile for performance */}
-         <div className="hidden lg:block absolute inset-0 z-0 opacity-10 mix-blend-screen pointer-events-none">
-             <CircuitBoard color="#0ea5e9" className="rotate-180" />
-         </div>
+      <section className="py-16 md:py-24 bg-[#171717] border-y border-white/5 relative overflow-hidden" style={{ contentVisibility: 'auto', contain: 'layout paint style' }}>
 
-         {/* Background decoration - Hidden on mobile */}
-         <div className="hidden md:block absolute inset-0 opacity-10 pointer-events-none">
-             <div className="absolute left-0 top-10 w-full h-px bg-linear-to-r from-transparent via-[#f97316] to-transparent"></div>
-             <div className="absolute left-0 bottom-10 w-full h-px bg-linear-to-r from-transparent via-[#0ea5e9] to-transparent"></div>
-             <div className="absolute right-20 top-0 w-px h-full bg-linear-to-b from-transparent via-white to-transparent opacity-20"></div>
-         </div>
+        {/* Background decoration - Hidden on mobile */}
+        <div className="hidden md:block absolute inset-0 opacity-10 pointer-events-none">
+          <div className="absolute left-0 top-10 w-full h-px bg-linear-to-r from-transparent via-[#f97316] to-transparent"></div>
+          <div className="absolute left-0 bottom-10 w-full h-px bg-linear-to-r from-transparent via-[#0ea5e9] to-transparent"></div>
+          <div className="absolute right-20 top-0 w-px h-full bg-linear-to-b from-transparent via-white to-transparent opacity-20"></div>
+        </div>
 
-         <div className="container mx-auto px-4 relative z-10">
-            {/* Peering Part */}
-            <div className="mb-20 md:mb-24">
-                <div 
-                  className="text-center mb-12"
-                >
-                    <div className="inline-flex items-center space-x-2 bg-[#f97316]/10 border border-[#f97316]/20 rounded-full px-4 py-1 mb-4">
-                        <Activity size={14} className="text-[#f97316]" />
-                        <span className="text-[#f97316] text-xs font-bold uppercase tracking-wider">Connectivity</span>
-                    </div>
-                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
-                        Hạ tầng mạng <span className="text-[#f97316]">Peering</span> Đa Hướng
-                    </h2>
-                    <p className="text-slate-400 max-w-3xl mx-auto text-base md:text-lg px-4">
-                        Kết nối trực tiếp (Direct Connect) tới 3 nhà cung cấp dịch vụ Internet lớn nhất Việt Nam. 
-                        Đảm bảo băng thông rộng và độ trễ thấp nhất cho người dùng cuối.
-                    </p>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
-                    {[
-                        { name: "Viettel IDC",imgURL:'/viettel_400x400.jpg', color: "bg-red-600", textColor: "text-red-500", bgSoft: "bg-red-500/10" },
-                        { name: "VNPT Data", imgURL:'/vnpt_400x400.jpg', color: "bg-blue-600", textColor: "text-blue-500", bgSoft: "bg-blue-500/10" },
-                        { name: "FPT Telecom", imgURL:'/fpt_400x400.png', color: "bg-orange-600", textColor: "text-orange-500", bgSoft: "bg-orange-500/10" }
-                    ].map((isp, idx) => (
-                        <div 
-                            key={idx}
-                            className={`group relative overflow-hidden rounded-2xl p-6 md:p-8 border border-white/5 ${isp.bgSoft} hover:border-white/20 transition-all`}
-                        >
-                            <div className="flex flex-col items-center text-center">
-                        <div className={`w-30 h-30 rounded-xl ${isp.color} flex items-center justify-center mb-4 shadow-lg shadow-black/50`}>
-                                    <Image src={isp.imgURL} alt={isp.name} width={120} height={120} className="object-contain rounded-xl" loading="lazy" />
-                                </div>
-                                <h3 className={`text-2xl font-extrabold ${isp.textColor} mb-2`}>{isp.name}</h3>
-                                <p className="text-slate-300 text-sm">Băng thông trong nước <br/><strong>10 Gbps+</strong></p>
-                                <div className="mt-4 flex items-center space-x-2 text-xs text-slate-400 bg-black/30 px-3 py-1 rounded-full">
-                                    <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-                                    <span>Low Latency &lt; 5ms</span>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
+        <div className="container mx-auto px-4 relative z-10">
+          {/* Peering Part */}
+          <div className="mb-20 md:mb-24">
+            <div
+              className="text-center mb-12"
+            >
+              <div className="inline-flex items-center space-x-2 bg-[#f97316]/10 border border-[#f97316]/20 rounded-full px-4 py-1 mb-4">
+                <Activity size={14} className="text-[#f97316]" />
+                <span className="text-[#f97316] text-xs font-bold uppercase tracking-wider">Connectivity</span>
+              </div>
+              <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+                Hạ tầng mạng <span className="text-[#f97316]">Peering</span> Đa Hướng
+              </h2>
+              <p className="text-slate-400 max-w-3xl mx-auto text-base md:text-lg px-4">
+                Kết nối trực tiếp (Direct Connect) tới 3 nhà cung cấp dịch vụ Internet lớn nhất Việt Nam.
+                Đảm bảo băng thông rộng và độ trễ thấp nhất cho người dùng cuối.
+              </p>
             </div>
 
-            {/* Data Center Part */}
-            <div>
-                <div 
-                  className="text-center mb-12"
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
+              {[
+                { name: "Viettel IDC", imgURL: '/viettel_400x400.jpg', color: "bg-red-600", textColor: "text-red-500", bgSoft: "bg-red-500/10" },
+                { name: "VNPT Data", imgURL: '/vnpt_400x400.jpg', color: "bg-blue-600", textColor: "text-blue-500", bgSoft: "bg-blue-500/10" },
+                { name: "FPT Telecom", imgURL: '/fpt_400x400.png', color: "bg-orange-600", textColor: "text-orange-500", bgSoft: "bg-orange-500/10" }
+              ].map((isp, idx) => (
+                <div
+                  key={idx}
+                  className={`group relative overflow-hidden rounded-2xl p-6 md:p-8 border border-white/5 ${isp.bgSoft} hover:border-white/20 transition-all`}
                 >
-                    <div className="inline-flex items-center space-x-2 bg-[#0ea5e9]/10 border border-[#0ea5e9]/20 rounded-full px-4 py-1 mb-4">
-                        <Building2 size={14} className="text-[#0ea5e9]" />
-                        <span className="text-[#0ea5e9] text-xs font-bold uppercase tracking-wider">Infrastructure</span>
+                  <div className="flex flex-col items-center text-center">
+                    <div className={`w-30 h-30 rounded-xl ${isp.color} flex items-center justify-center mb-4 shadow-lg shadow-black/50`}>
+                      <Image src={isp.imgURL} alt={isp.name} width={120} height={120} className="object-contain rounded-xl" loading="lazy" />
                     </div>
-                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
-                        Hệ thống Data Center đạt chuẩn <span className="text-[#0ea5e9]">Tier 3</span>
-                    </h2>
-                    <p className="text-slate-400 max-w-3xl mx-auto text-base md:text-lg px-4">
-                        Hệ thống máy chủ được đặt tại các Data Center đạt chuẩn Tier 3 Quốc tế tại 2 thành phố lớn nhất Việt Nam, 
-                        đảm bảo an toàn dữ liệu và hoạt động liên tục 99.99%.
-                    </p>
+                    <h3 className={`text-2xl font-extrabold ${isp.textColor} mb-2`}>{isp.name}</h3>
+                    <p className="text-slate-300 text-sm">Băng thông trong nước <br /><strong>10 Gbps+</strong></p>
+                    <div className="mt-4 flex items-center space-x-2 text-xs text-slate-400 bg-black/30 px-3 py-1 rounded-full">
+                      <div className="w-2 h-2 rounded-full bg-green-500 motion-safe:animate-pulse"></div>
+                      <span>Low Latency &lt; 5ms</span>
+                    </div>
+                  </div>
                 </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 max-w-4xl mx-auto">
-                     {/* Hanoi */}
-                     <div className="bg-[#0f0f0f] rounded-3xl p-2 border border-white/10 shadow-2xl hover:shadow-lg transition-shadow">
-                        <div className="relative bg-[#171717] rounded-[20px] p-6 md:p-8 overflow-hidden h-full">
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-red-500/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
-                            <div className="flex items-start justify-between mb-8 relative z-10">
-                                <div>
-                                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-1">Hà Nội</h3>
-                                    <span className="text-slate-500 flex items-center gap-1"><MapPin size={14}/> Miền Bắc</span>
-                                </div>
-                                <div className="bg-white/5 p-3 rounded-xl border border-white/5">
-                                    <Server className="text-red-500 h-8 w-8" />
-                                </div>
-                            </div>
-                            <ul className="space-y-3 relative z-10">
-                                <li className="flex items-center text-slate-300 text-sm">
-                                    <Router size={16} className="mr-3 text-slate-500"/> Viettel IDC Hòa Lạc
-                                </li>
-                                <li className="flex items-center text-slate-300 text-sm">
-                                    <Router size={16} className="mr-3 text-slate-500"/> VNPT IDC Nam Thăng Long
-                                </li>
-                                <li className="flex items-center text-slate-300 text-sm">
-                                    <Network size={16} className="mr-3 text-slate-500"/> Kết nối quốc tế: HK, JP
-                                </li>
-                            </ul>
-                        </div>
-                     </div>
-
-                     {/* HCMC */}
-                     <div className="bg-[#0f0f0f] rounded-3xl p-2 border border-white/10 shadow-2xl hover:shadow-lg transition-shadow">
-                        <div className="relative bg-[#171717]  rounded-[20px] p-6 md:p-8 overflow-hidden h-full">
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-[#0ea5e9]/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
-                            <div className="flex items-start justify-between mb-8 relative z-10">
-                                <div>
-                                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-1">TP. Hồ Chí Minh</h3>
-                                    <span className="text-slate-500 flex items-center gap-1"><MapPin size={14}/> Miền Nam</span>
-                                </div>
-                                <div className="bg-white/5 p-3 rounded-xl border border-white/5">
-                                    <Server className="text-[#0ea5e9] h-8 w-8" />
-                                </div>
-                            </div>
-                            <ul className="space-y-3 relative z-10">
-                                <li className="flex items-center text-slate-300 text-sm">
-                                    <Router size={16} className="mr-3 text-slate-500"/> FPT Data Center Tân Thuận
-                                </li>
-                                <li className="flex items-center text-slate-300 text-sm">
-                                    <Router size={16} className="mr-3 text-slate-500"/> Viettel IDC Bình Dương
-                                </li>
-                                <li className="flex items-center text-slate-300 text-sm">
-                                    <Network size={16} className="mr-3 text-slate-500"/> Kết nối quốc tế: SG, US
-                                </li>
-                            </ul>
-                        </div>
-                     </div>
-                </div>
+              ))}
             </div>
-         </div>
+          </div>
+
+          {/* Data Center Part */}
+          <div>
+            <div
+              className="text-center mb-12"
+            >
+              <div className="inline-flex items-center space-x-2 bg-[#0ea5e9]/10 border border-[#0ea5e9]/20 rounded-full px-4 py-1 mb-4">
+                <Building2 size={14} className="text-[#0ea5e9]" />
+                <span className="text-[#0ea5e9] text-xs font-bold uppercase tracking-wider">Infrastructure</span>
+              </div>
+              <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+                Hệ thống Data Center đạt chuẩn <span className="text-[#0ea5e9]">Tier 3</span>
+              </h2>
+              <p className="text-slate-400 max-w-3xl mx-auto text-base md:text-lg px-4">
+                Hệ thống máy chủ được đặt tại các Data Center đạt chuẩn Tier 3 Quốc tế tại 2 thành phố lớn nhất Việt Nam,
+                đảm bảo an toàn dữ liệu và hoạt động liên tục 99.99%.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 max-w-4xl mx-auto">
+              {/* Hanoi */}
+              <div className="bg-[#0f0f0f] rounded-3xl p-2 border border-white/10 shadow-2xl hover:shadow-lg transition-shadow">
+                <div className="relative bg-[#171717] rounded-[20px] p-6 md:p-8 overflow-hidden h-full">
+                  <div className="absolute top-0 right-0 w-32 h-32 -mr-10 -mt-10 rounded-full" style={{ background: 'radial-gradient(closest-side, rgba(239,68,68,0.2), rgba(239,68,68,0) 70%)' }}></div>
+                  <div className="flex items-start justify-between mb-8 relative z-10">
+                    <div>
+                      <h3 className="text-2xl md:text-3xl font-bold text-white mb-1">Hà Nội</h3>
+                      <span className="text-slate-500 flex items-center gap-1"><MapPin size={14} /> Miền Bắc</span>
+                    </div>
+                    <div className="bg-white/5 p-3 rounded-xl border border-white/5">
+                      <Server className="text-red-500 h-8 w-8" />
+                    </div>
+                  </div>
+                  <ul className="space-y-3 relative z-10">
+                    <li className="flex items-center text-slate-300 text-sm">
+                      <Router size={16} className="mr-3 text-slate-500" /> Viettel IDC Hòa Lạc
+                    </li>
+                    <li className="flex items-center text-slate-300 text-sm">
+                      <Router size={16} className="mr-3 text-slate-500" /> VNPT IDC Nam Thăng Long
+                    </li>
+                    <li className="flex items-center text-slate-300 text-sm">
+                      <Network size={16} className="mr-3 text-slate-500" /> Kết nối quốc tế: HK, JP
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* HCMC */}
+              <div className="bg-[#0f0f0f] rounded-3xl p-2 border border-white/10 shadow-2xl hover:shadow-lg transition-shadow">
+                <div className="relative bg-[#171717]  rounded-[20px] p-6 md:p-8 overflow-hidden h-full">
+                  <div className="absolute top-0 right-0 w-32 h-32 -mr-10 -mt-10 rounded-full" style={{ background: 'radial-gradient(closest-side, rgba(14,165,233,0.2), rgba(14,165,233,0) 70%)' }}></div>
+                  <div className="flex items-start justify-between mb-8 relative z-10">
+                    <div>
+                      <h3 className="text-2xl md:text-3xl font-bold text-white mb-1">TP. Hồ Chí Minh</h3>
+                      <span className="text-slate-500 flex items-center gap-1"><MapPin size={14} /> Miền Nam</span>
+                    </div>
+                    <div className="bg-white/5 p-3 rounded-xl border border-white/5">
+                      <Server className="text-[#0ea5e9] h-8 w-8" />
+                    </div>
+                  </div>
+                  <ul className="space-y-3 relative z-10">
+                    <li className="flex items-center text-slate-300 text-sm">
+                      <Router size={16} className="mr-3 text-slate-500" /> FPT Data Center Tân Thuận
+                    </li>
+                    <li className="flex items-center text-slate-300 text-sm">
+                      <Router size={16} className="mr-3 text-slate-500" /> Viettel IDC Bình Dương
+                    </li>
+                    <li className="flex items-center text-slate-300 text-sm">
+                      <Network size={16} className="mr-3 text-slate-500" /> Kết nối quốc tế: SG, US
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Product Preview Sections */}
-      <section className="py-16 md:py-20 bg-[#171717]/50 border-t border-white/5">
+      <section className="py-16 md:py-20 bg-[#171717]/50 border-t border-white/5" style={{ contentVisibility: 'auto', contain: 'layout paint style' }}>
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
             <div className="lg:w-1/2 w-full">
-               <div className="relative">
-                  <div className="absolute -inset-4 bg-linear-to-r rotate-6 from-[#f97316]/50 to-[#0ea5e9]/50 rounded-2xl blur-lg opacity-55"></div>
-                  <Image
-                    src="/data-center-16692836603261584616341.jpg"
-                    alt="Server Room"
-                    width={800}
-                    height={600}
-                    className="relative rounded-2xl shadow-2xl border border-white/10 w-full h-auto"
-                    loading="lazy"
-                    quality={75}
-                  />
-               </div>
+              <div className="relative">
+                <div className="absolute -inset-4 rotate-6 rounded-2xl opacity-50" style={{ background: 'linear-gradient(90deg, rgba(249,115,22,0.35), rgba(14,165,233,0.35))' }}></div>
+                <Image
+                  src="/data-center-16692836603261584616341.jpg"
+                  alt="Server Room"
+                  width={800}
+                  height={600}
+                  className="relative rounded-2xl shadow-2xl border border-white/10 w-full h-auto"
+                  loading="lazy"
+                  quality={75}
+                />
+              </div>
             </div>
             <div className="lg:w-1/2 w-full text-center lg:text-left">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
@@ -372,7 +334,7 @@ const HomePage: React.FC = () => {
               </ul>
               <div className="flex justify-center lg:justify-start">
                 <Link href="/pages/products" className="text-[#f97316] font-bold hover:text-white transition-colors inline-flex items-center">
-                    Xem cấu hình chi tiết <ArrowRight size={18} className="ml-2" />
+                  Xem cấu hình chi tiết <ArrowRight size={18} className="ml-2" />
                 </Link>
               </div>
             </div>
@@ -381,29 +343,29 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Testimonials Slider */}
-    
+
 
       {/* Call to Action */}
-      <section className="py-16 md:py-20 bg-[#0a0a0a]">
+      <section className="py-16 md:py-20 bg-[#0a0a0a]" style={{ contentVisibility: 'auto', contain: 'layout paint style' }}>
         <div className="container mx-auto px-4">
           <div className="bg-linear-to-r from-[#1a1a1a] to-[#0f0f0f] rounded-3xl p-8 md:p-16 border border-white/10 relative overflow-hidden shadow-2xl">
-             <div className="absolute top-0 right-0 -mt-20 -mr-20 w-64 md:w-80 h-64 md:h-80 bg-[#f97316]/20 rounded-full blur-[100px]"></div>
-             <div className="absolute bottom-0 left-0 -mb-20 -ml-20 w-64 md:w-80 h-64 md:h-80 bg-[#0ea5e9]/20 rounded-full blur-[100px]"></div>
-             
-             <div className="relative z-10 flex flex-col md:flex-col items-center justify-center gap-10 text-center md:text-left">
-                <div className="text-center">
-                  <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Sẵn sàng triển khai dự án của bạn?</h2>
-                  <p className="text-slate-400 text-base md:text-lg">
-                    Khởi tạo Cloud Server ngay lập tức với hệ thống tự động hóa 100%. 
-                    Dùng thử miễn phí 3 ngày đầu tiên.
-                  </p>
-                </div>
-                <div className=" flex justify-center md:justify-center w-full">
-                   <Link href="/pages/products" className="group w-60 flex items-center justify-center gap-2 bg-[#f97316] text-white font-bold py-4 px-8 rounded-lg hover:bg-[#ea580c] shadow-lg shadow-[#f97316]/30 transition-all active:scale-95">
-                        Đăng Ký Ngay <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                   </Link>
-                </div>
-             </div>
+            <div className="absolute top-0 right-0 -mt-20 -mr-20 w-64 md:w-80 h-64 md:h-80 rounded-full" style={{ background: 'radial-gradient(closest-side, rgba(249,115,22,0.25), rgba(249,115,22,0) 70%)' }}></div>
+            <div className="absolute bottom-0 left-0 -mb-20 -ml-20 w-64 md:w-80 h-64 md:h-80 rounded-full" style={{ background: 'radial-gradient(closest-side, rgba(14,165,233,0.25), rgba(14,165,233,0) 70%)' }}></div>
+
+            <div className="relative z-10 flex flex-col md:flex-col items-center justify-center gap-10 text-center md:text-left">
+              <div className="text-center">
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Sẵn sàng triển khai dự án của bạn?</h2>
+                <p className="text-slate-400 text-base md:text-lg">
+                  Khởi tạo Cloud Server ngay lập tức với hệ thống tự động hóa 100%.
+                  Dùng thử miễn phí 3 ngày đầu tiên.
+                </p>
+              </div>
+              <div className=" flex justify-center md:justify-center w-full">
+                <Link href="/pages/products" className="group w-60 flex items-center justify-center gap-2 bg-[#f97316] text-white font-bold py-4 px-8 rounded-lg hover:bg-[#ea580c] shadow-lg shadow-[#f97316]/30 transition-all active:scale-95">
+                  Đăng Ký Ngay <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>

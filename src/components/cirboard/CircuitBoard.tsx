@@ -1,18 +1,22 @@
 'use client'
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 
 interface CircuitBoardProps {
   color?: string;
   opacity?: number;
   className?: string;
+  animated?: boolean;
 }
 
 const CircuitBoard: React.FC<CircuitBoardProps> = ({ 
   color = "#f97316", // Default primary orange
   opacity = 0.1,
-  className = ""
+  className = "",
+  animated = true
 }) => {
+  const reduceMotion = useReducedMotion();
+  const shouldAnimate = animated && !reduceMotion;
   // Define circuit paths (traces)
   // Coordinates based on a 100x100 viewBox for scalability
   const paths = [
@@ -71,30 +75,31 @@ const CircuitBoard: React.FC<CircuitBoardProps> = ({
               vectorEffect="non-scaling-stroke"
             />
 
-            {/* Electricity Effect (Moving bright segment) */}
-            <motion.path
-              d={d}
-              fill="none"
-              stroke={`url(#trace-grad)`}
-              strokeWidth="0.6"
-              strokeLinecap="round"
-              vectorEffect="non-scaling-stroke"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{
-                pathLength: [0, 0.3, 0], // Grow then shrink
-                pathOffset: [0, 1, 1],   // Move along the path
-                opacity: [0, 1, 0]       // Fade in/out
-              }}
-              transition={{
-                // Deterministic per-path timing to avoid hydration mismatch
-                duration: 3 + ((i * 73) % 400) / 100, // ~3s to ~6.99s
-                repeat: Infinity,
-                ease: "linear",
-                delay: ((i * 53) % 500) / 100,       // 0 to <5s
-                repeatDelay: ((i * 91) % 200) / 100  // 0 to <2s
-              }}
-              style={{ filter: 'url(#glow)' }}
-            />
+            {/* Electricity Effect (animated only if allowed) */}
+            {shouldAnimate && (
+              <motion.path
+                d={d}
+                fill="none"
+                stroke={`url(#trace-grad)`}
+                strokeWidth="0.6"
+                strokeLinecap="round"
+                vectorEffect="non-scaling-stroke"
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={{
+                  pathLength: [0, 0.3, 0],
+                  pathOffset: [0, 1, 1],
+                  opacity: [0, 1, 0]
+                }}
+                transition={{
+                  duration: 3 + ((i * 73) % 400) / 100,
+                  repeat: Infinity,
+                  ease: "linear",
+                  delay: ((i * 53) % 500) / 100,
+                  repeatDelay: ((i * 91) % 200) / 100
+                }}
+                style={{ filter: 'url(#glow)' }}
+              />
+            )}
 
             {/* Circuit Node/Dot at ends (optional, simplified for performance) */}
             <circle 
