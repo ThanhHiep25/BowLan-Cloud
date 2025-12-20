@@ -192,7 +192,7 @@ const PrivacyPage: React.FC = () => {
                           key={itemIdx}
                           className="flex items-start text-lg gap-3 text-gray-300"
                         >
-                          <span className="w-1.5 h-1.5 bg-[#0ea5e9]/50 rounded-full shrink-0 mt-2"></span>
+                          <span className="w-1.5 h-1.5 bg-white rounded-full shrink-0 mt-2"></span>
                           <span>{item}</span>
                         </li>
                       ))}

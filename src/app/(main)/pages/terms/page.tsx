@@ -350,7 +350,7 @@ const TermsPage: React.FC = () => {
                           key={itemIdx}
                           className="flex gap-3 items-start text-slate-300 text-sm leading-relaxed"
                         >
-                          <span className="shrink-0 w-1.5 h-1.5 rounded-full bg-[#f97316]/60 mt-2"></span>
+                          <span className="shrink-0 w-1.5 h-1.5 rounded-full bg-white mt-2"></span>
                           <span className="hover:text-slate-200 transition-colors text-lg">{item}</span>
                         </li>
                       ))}

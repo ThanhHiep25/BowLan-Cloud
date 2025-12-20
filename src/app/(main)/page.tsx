@@ -116,26 +116,6 @@ const HomePage: React.FC = () => {
           </div>
         </div>
       </section>
-
-      {/* Stats Section */}
-      {/* <section className="py-10 bg-[#171717] border-y border-white/5" style={{ contain: 'layout style paint' }}>
-         <div className="container mx-auto px-4">
-           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
-              {[
-                { label: "Khách hàng", value: "10k+", color: "text-[#f97316]" },
-                { label: "Cloud Server Active", value: "50k+", color: "text-[#0ea5e9]" },
-                { label: "Gbps Anti-DDoS", value: "200+", color: "text-green-500" },
-                { label: "Uptime SLA", value: "99.9%", color: "text-slate-400" }
-              ].map((stat, idx) => (
-                <div key={idx} className="p-2 md:p-4">
-                  <div className="text-3xl md:text-4xl font-bold text-white mb-2">{stat.value}</div>
-                  <div className={`${stat.color} text-xs md:text-sm font-semibold uppercase tracking-wider`}>{stat.label}</div>
-                </div>
-              ))}
-           </div>
-         </div>
-      </section> */}
-
       {/* Features Grid */}
       <section className="py-16 md:py-24 bg-[#0a0a0a] relative" id="why-choose-us" style={{ contentVisibility: 'auto', contain: 'layout paint style' }}>
         <div className="container mx-auto px-4">
